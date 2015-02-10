@@ -15,7 +15,10 @@ public class ExampleView {
 		this.view = view;
 
 		TextView example = (TextView) view.findViewById(R.id.example_text);
-		example.setText("Hello world");
+		example.setText("Welcome to Dinner Planner! \n\n" +
+                "Here you will be able to easily plan your dinner.\n\n" +
+                "On the next page start by selecting number of participants. Then select your courses.\n\n" +
+                "Watch Magic Happen!");
 
 		// Setup the rest of the view layout
 	}

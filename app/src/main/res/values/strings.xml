@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">DinnerPlanner</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Welcome to Dinner Planner! \n\n Here you will be able to easily plan your dinner.\n\n
+        On the next page start by selecting number of participants. Then select your courses.\n\n
+        Watch Magic Happen!</string>
     <string name="action_settings">Settings</string>
 
 </resources>
