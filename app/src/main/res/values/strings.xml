@@ -5,6 +5,12 @@
     <string name="start_app">Welcome to Dinner Planner! \n\nHere you will be able to easily plan your dinner.\n\nOn the next page start by selecting number of participants. Then select your courses.\n\nWatch Magic Happen!</string>
     <string name="banner">Dinner Planner</string>
     <string name="start">Start</string>
+    <string name="type">Starter</string>
+    <string name="create">Create</string>
+    <string name="participants">Participants</string>
+    <string name="totalCost">Total Cost 0kr</string>
+    <string name="chooseMenu">Choose Menu</string>
     <string name="action_settings">Settings</string>
+
 
 </resources>

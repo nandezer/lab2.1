@@ -20,8 +20,6 @@ public class ExampleView {
                 "Here you will be able to easily plan your dinner.\n\n" +
                 "On the next page start by selecting number of participants. Then select your courses.\n\n" +
                 "Watch Magic Happen!");
-        Button start = (Button) view.findViewById(R.id.button_start);
-        start.setText("Start");
 		// Setup the rest of the view layout
 	}
 
