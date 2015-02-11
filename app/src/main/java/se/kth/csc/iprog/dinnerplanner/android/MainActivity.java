@@ -24,7 +24,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // Creating the view class instance
-        ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id));
+        ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id),"Welcome to Dinner Planner! \n\n" +
+                "Here you will be able to easily plan your dinner.\n\n" +
+                "On the next page start by selecting number of participants. Then select your courses.\n\n"+
+                " Watch Magic Happen!");
         Banner bannerView = new Banner(findViewById(R.id.this_is_banner_view_id));
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Start");
     }
