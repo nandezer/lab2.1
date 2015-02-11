@@ -13,6 +13,7 @@ import android.view.View;
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_Create;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
+import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 
 
 public class InstructionsMenu extends Activity {
@@ -21,6 +22,7 @@ public class InstructionsMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // Default call to load previous state
         super.onCreate(savedInstanceState);
+
 
         // Set the view for the main activity screen
         // it must come before any call to findViewById method

@@ -23,7 +23,7 @@ import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 
 
 public class ChooseMenu extends Activity {
-    DinnerModel model;
+    private DinnerModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,8 @@ public class ChooseMenu extends Activity {
         // it must come before any call to findViewById method
         setContentView(R.layout.choose_menu);
 
-        DinnerModel model = new DinnerModel();
-        this.model = model;
+        DinnerModel modelG = ((DinnerPlannerApplication)this.getApplication()).getModel();
+        this.model = modelG;
         Banner bannerView = new Banner(findViewById(R.id.this_is_banner_view_id));
         ExampleView starters = new ExampleView(findViewById(R.id.starters),"Starters");
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses),"Main Courses");
@@ -59,6 +59,8 @@ public class ChooseMenu extends Activity {
                 break;
             case R.id.banner:
                 this.model = new DinnerModel();
+                ((DinnerPlannerApplication)this.getApplication()).setModel(model);
+
         }
     }
 
