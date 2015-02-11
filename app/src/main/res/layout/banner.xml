@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:id="@+id/this_is_banner_view_id"
-    android:background="#ffe1001e">
+    android:background="#ffe1001e"
+    android:onClick="onClick">
 
     <TextView
         android:id="@+id/banner"
