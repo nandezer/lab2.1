@@ -7,9 +7,11 @@
     <string name="start">Start</string>
     <string name="type">Starter</string>
     <string name="create">Create</string>
-    <string name="participants">Participants</string>
-    <string name="totalCost">Total Cost 0kr</string>
+    <string name="guests">Guests</string>
+    <string name="totalCost">Total Cost: 0 kr</string>
     <string name="chooseMenu">Choose Menu</string>
+    <string name="ingredients">Ingrients</string>
+    <string name="instructions">Instructions</string>
     <string name="action_settings">Settings</string>
 
 
