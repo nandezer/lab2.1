@@ -145,13 +145,13 @@ public class DinnerModel implements Serializable {
     }
 
     /**
-     * Returns the total price of the menu (all the ingredients need to be multiplied by number of guests).
+     * Returns the total price of the menu (all the ingredients multiplied by number of guests).
      */
     public float getTotalMenuPrice(){
         float price = 0;
         for (Dish d : selectedDishes){
             for(Ingredient i : d.getIngredients()){
-                price += i.getPrice();
+                price += (i.getPrice()*guestNum);
             }
         }
         return price;

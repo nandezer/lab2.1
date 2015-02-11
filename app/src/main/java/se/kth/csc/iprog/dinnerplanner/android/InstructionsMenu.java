@@ -45,7 +45,7 @@ public class InstructionsMenu extends Activity {
         ExampleView ingredients = new ExampleView(findViewById(R.id.selectedIngredients),"Ingredients");
         ExampleView Dish1 = new ExampleView(findViewById(R.id.dishName),"Dish1");
 
-        float totalPrice = model.getTotalMenuPrice() * model.getNumberOfGuests();
+        float totalPrice = model.getTotalMenuPrice();
         ExampleView totalCost = new ExampleView(findViewById(R.id.price_instructions),"Total Cost: "+String.valueOf(totalPrice)+" kr");
         ExampleView instructions = new ExampleView(findViewById(R.id.instruction_header),"Instructions");
         //DYNAMIC
