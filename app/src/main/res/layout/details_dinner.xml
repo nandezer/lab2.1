@@ -14,30 +14,20 @@
         android:id="@+id/participants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10pt"
+        android:textSize="12pt"
         android:layout_marginLeft="10dp"
         android:adjustViewBounds="true"
-        android:text="@string/participants"
+        android:text="@string/guests"
         android:textColor="#ff000000" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="170dp"
-        android:layout_marginLeft="130dp"
+        android:layout_marginRight="200dp"
+        android:layout_marginLeft="100dp"
         android:id="@+id/spinner"
         android:visibility="visible"
         android:layout_alignBottom="@+id/participants" />
-
-    <TextView
-        android:id="@+id/totalCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10pt"
-        android:layout_marginLeft="190dp"
-        android:adjustViewBounds="true"
-        android:text="@string/totalCost"
-        android:textColor="#ff000000" />
 
     <TextView
         android:id="@+id/chooseMenu"
@@ -49,7 +39,6 @@
         android:adjustViewBounds="true"
         android:text="@string/chooseMenu"
         android:textColor="#ff000000" />
-
 
 
 
