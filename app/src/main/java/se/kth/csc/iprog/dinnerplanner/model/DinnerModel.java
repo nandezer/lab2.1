@@ -134,7 +134,7 @@ public class DinnerModel implements Serializable {
     /**
      * Returns all ingredients for all the dishes on the menu.
      */
-    public Set<Ingredient> getAllIngredients(){
+        public Set<Ingredient> getAllIngredients(){
         Set<Ingredient> ingredients = new HashSet<Ingredient>();
         for (Dish d : selectedDishes){
             for(Ingredient i : d.getIngredients()){
@@ -145,7 +145,7 @@ public class DinnerModel implements Serializable {
     }
 
     /**
-     * Returns the total price of the menu (all the ingredients multiplied by number of guests).
+     * Returns the total price of the menu (all the ingredients need to be multiplied by number of guests).
      */
     public float getTotalMenuPrice(){
         float price = 0;

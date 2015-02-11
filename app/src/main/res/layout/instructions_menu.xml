@@ -28,10 +28,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="280dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="290dp"
         android:layout_marginBottom="500dp"
         android:layout_below="@+id/banner_instructions"
+        android:id = "@+id/goBack"
         layout="@layout/go_back" />
 
 
@@ -40,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginStart="160dp"
+        android:id = "@+id/instruction_header"
         android:layout_below="@+id/price_instructions"
-        android:textSize="7pt"
         layout="@layout/selected_dish_name" />
 
 
@@ -52,6 +53,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginStart="40dp"
         android:id="@+id/ingrdientsImage"
+        android:onClick="onClick"
         layout="@layout/dish_display_image" />
     <include
         android:layout_width="wrap_content"
@@ -71,6 +73,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginStart="130dp"
         android:id="@+id/dishImage"
+        android:onClick="onClick"
         layout="@layout/dish_display_image" />
     <include
         android:layout_width="wrap_content"
@@ -82,13 +85,21 @@
         android:id="@+id/dishName"
         layout="@layout/selected_dish_name" />
 
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/selectedIngredients"
+        layout="@layout/dish_display_type"
+        android:id="@+id/header" />
 
     <include
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/instruction_dish"
-        android:layout_below="@+id/dishName"
+        android:layout_below="@+id/header"
         layout="@layout/example_view" />
 
 
