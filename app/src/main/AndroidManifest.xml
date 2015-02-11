@@ -21,6 +21,9 @@
         <activity
             android:name=".ChooseMenu"
             android:label="DinnerPlanner" />
+        <activity
+            android:name=".InstructionsMenu"
+            android:label="DinnerPlanner" />
     </application>
 
 </manifest>
