@@ -10,16 +10,13 @@ public class ExampleView {
 
 	View view;
 
-	public ExampleView(View view) {
+	public ExampleView(View view, String text) {
 
 		// store in the class the reference to the Android View
 		this.view = view;
 
 		TextView example = (TextView) view.findViewById(R.id.example_text);
-		example.setText("Welcome to Dinner Planner! \n\n" +
-                "Here you will be able to easily plan your dinner.\n\n" +
-                "On the next page start by selecting number of participants. Then select your courses.\n\n" +
-                "Watch Magic Happen!");
+		example.setText(text);
 		// Setup the rest of the view layout
 	}
 
