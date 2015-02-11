@@ -29,13 +29,25 @@ import static android.graphics.drawable.Drawable.*;
 public class DishDisplay{
 
     View view;
-    DinnerModel model;
 
-    //@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public DishDisplay(View view, DinnerModel model) {
+
+    public DishDisplay(View view, Set<Dish> dishes, int type) {
         this.view = view;
-        this.model = model;
 
+        TextView dishType = (TextView) view.findViewById(R.id.example_text);
+        switch (type) {
+       case 1:
+            dishType.setText("Starter");
+           break;
+       case 2:
+            dishType.setText("Main Course");
+           break;
+       case 3:
+            dishType.setText("Dessert");
+           break;
+
+
+        }
         /*Set<Dish> dishes = model.getDishes();
         for(Dish d : dishes){
             ImageButton ImageDish = (ImageButton) view.findViewById(R.id.dish_display_type);
