@@ -1,9 +1,10 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DinnerModel {
+public class DinnerModel implements Serializable {
 
 
     Set<Dish> dishes = new HashSet<Dish>();
