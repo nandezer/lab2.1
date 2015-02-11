@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ChooseMenu"
     android:background="#ffffffff">
 
 
@@ -13,27 +13,54 @@
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:layout_marginLeft="10dp"
         layout="@layout/dish_display_type"
-        android:id="@+id/include" />
+        android:id="@+id/starters" />
 
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        layout="@layout/dish_display_type"
-        android:layout_below="@+id/include"
+        android:layout_marginTop="10dp"
+        layout="@layout/dish_display_image"
+        android:layout_below="@+id/starters"
         android:layout_marginLeft="10dp"
-        android:id="@+id/include2" />
+        android:id="@+id/startersImage" />
 
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         layout="@layout/dish_display_type"
-        android:layout_below="@+id/include2"
-        android:layout_marginLeft="10dp" />
+        android:layout_below="@+id/startersImage"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/mainCourses" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        layout="@layout/dish_display_image"
+        android:layout_below="@+id/mainCourses"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/mainCourseImage" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        layout="@layout/dish_display_type"
+        android:layout_below="@+id/mainCourseImage"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/desserts"/>
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        layout="@layout/dish_display_image"
+        android:layout_below="@+id/desserts"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/dessertsImage" />
 
     <include
         android:layout_width="wrap_content"
@@ -42,13 +69,22 @@
         layout="@layout/details_dinner" />
 
     <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="180dp"
+        layout="@layout/total_cost" />
+
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/banner" />
 
     <include
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="125dp"
         layout="@layout/button_start_create" />
 
 
