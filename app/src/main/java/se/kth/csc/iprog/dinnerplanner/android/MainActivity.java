@@ -10,19 +10,26 @@ import android.view.View;
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_Create;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
+import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 
 
 public class MainActivity extends Activity {
+
+
+    private DinnerModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Default call to load previous state
         super.onCreate(savedInstanceState);
 
+
         // Set the view for the main activity screen
         // it must come before any call to findViewById method
         setContentView(R.layout.activity_main);
 
+        DinnerModel modelG = ((DinnerPlannerApplication)this.getApplication()).getModel();
+        this.model = modelG;
         // Creating the view class instance
         ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id),"Welcome to Dinner Planner! \n\n" +
                 "Here you will be able to easily plan your dinner.\n\n" +
