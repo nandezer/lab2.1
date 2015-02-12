@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.widget.GridView;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -34,19 +36,24 @@ public class ChooseMenu extends Activity {
         // it must come before any call to findViewById method
         setContentView(R.layout.choose_menu);
 
-        DinnerModel modelG = ((DinnerPlannerApplication)this.getApplication()).getModel();
+        DinnerModel modelG = ((DinnerPlannerApplication) this.getApplication()).getModel();
         this.model = modelG;
         Banner bannerView = new Banner(findViewById(R.id.this_is_banner_view_id));
-        ExampleView starters = new ExampleView(findViewById(R.id.starters),"Starters");
-        ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses),"Main Courses");
-        ExampleView desserts = new ExampleView(findViewById(R.id.desserts),"Desserts");
-        DetailsDinner details =  new DetailsDinner(findViewById(R.id.this_is_details_dinner_view_id), model);
+        ExampleView starters = new ExampleView(findViewById(R.id.starters), "Starters");
+        displayStarters();
+        ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
+        ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
+        DetailsDinner details = new DetailsDinner(findViewById(R.id.this_is_details_dinner_view_id), model);
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Create");
 
-
-
     }
-
+    private void displayStarters() {
+        Set<Dish> dishes;
+        dishes = model.getDishesOfType(1);
+        DishDisplay adapter = new DishDisplay(this, dishes);
+        GridView grid = (GridView)findViewById(R.id.dish_display);
+        grid.setAdapter(adapter);
+    }
 
 
     public void onClick(View view) {
