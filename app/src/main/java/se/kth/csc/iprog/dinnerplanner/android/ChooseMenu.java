@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.widget.GridView;
+import android.widget.AdapterView;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -26,7 +28,7 @@ import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 
 public class ChooseMenu extends Activity {
     private DinnerModel model;
-
+    GridView grid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Default call to load previous state
@@ -40,19 +42,15 @@ public class ChooseMenu extends Activity {
         this.model = modelG;
         Banner bannerView = new Banner(findViewById(R.id.this_is_banner_view_id));
         ExampleView starters = new ExampleView(findViewById(R.id.starters), "Starters");
-        displayStarters();
+        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1));
+
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
+        DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2));
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
+        DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3));
         DetailsDinner details = new DetailsDinner(findViewById(R.id.this_is_details_dinner_view_id), model);
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Create");
 
-    }
-    private void displayStarters() {
-        Set<Dish> dishes;
-        dishes = model.getDishesOfType(1);
-        DishDisplay adapter = new DishDisplay(this, dishes);
-        GridView grid = (GridView)findViewById(R.id.dish_display);
-        grid.setAdapter(adapter);
     }
 
 

@@ -1,20 +1,27 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 
 import java.util.HashSet;
@@ -41,10 +48,11 @@ public class DishDisplay extends BaseAdapter{
     Set<Dish> dishes;
     String[] dishesName;
     String[] dishesImages;
+    GridView grid;
 
 
 
-    public DishDisplay(Context c, Set<Dish> dishes) {
+    public DishDisplay(Context c, View view, Set<Dish> dishes) {
         this.mContext = c;
         //this.view = view;
         this.dishes =dishes;
@@ -56,20 +64,7 @@ public class DishDisplay extends BaseAdapter{
             dishesImages[i]= d.getImage();
             i++;
         }
-
-/*
-        TextView dishType = (TextView) view.findViewById(R.id.example_text);
-        switch (type) {
-       case 1:
-            dishType.setText("Starter");
-           break;
-       case 2:
-            dishType.setText("Main Course");
-           break;
-       case 3:
-            dishType.setText("Dessert");
-           break;
-*/
+        displayDishes(view.findViewById(R.id.dish_display));
 
      }
     public int getCount() {
@@ -109,12 +104,39 @@ public class DishDisplay extends BaseAdapter{
         }
         return grid;
     }
-        /*Set<Dish> dishes = model.getDishes();
-        for(Dish d : dishes){
-            ImageButton ImageDish = (ImageButton) view.findViewById(R.id.dish_display_type);
-            //ImageDish.setBackground(Drawable.createFromPath("@drawable/"+d.getImage()));
+    private void displayDishes(View view) {
+        grid = (GridView)view.findViewById(R.id.dish_display);
+        grid.setAdapter(this);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
 
-        }*/
+               /* new AlertDialog.Builder(mContext)
+                        .setTitle("Delete entry")
+                        .setMessage("Are you sure you want to delete this entry?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();*/
+                LayoutInflater inflater = (LayoutInflater) mContext
+                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                Dialog settingsDialog = new Dialog(mContext);
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.show();
+
+            }
+        });
+
+    }
  }
 
 
