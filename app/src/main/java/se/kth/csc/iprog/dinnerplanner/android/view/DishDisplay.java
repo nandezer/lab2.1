@@ -18,6 +18,18 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.PopupWindow;
+
+
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -61,6 +73,9 @@ public class DishDisplay extends BaseAdapter{
     String[] dishesImages;
     GridView grid;
     boolean chooseMenu = true;
+
+    Button btnClosePopup;
+    Button btnCreatePopup;
 
 
     public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu) {
@@ -125,12 +140,32 @@ public class DishDisplay extends BaseAdapter{
 
                 if(chooseMenu){
 
-
+                    initiatePopupWindow(view, position);
                 }
             }
         });
 
     }
+    private PopupWindow pwindo;
+
+    private void initiatePopupWindow(View view, int position) {
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.screen_popup,(ViewGroup) view.findViewById(R.id.popup_element));
+        pwindo = new PopupWindow(layout, 300, 370, true);
+        pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+        ExampleView popText = new ExampleView(layout.findViewById(R.id.nameDish), dishesName[position]);
+
+        btnClosePopup = (Button) layout.findViewById(R.id.btn_close_popup);
+        btnClosePopup.setOnClickListener(cancel_button_click_listener);
+    }
+    private OnClickListener cancel_button_click_listener = new OnClickListener() {
+        public void onClick(View v) {
+            pwindo.dismiss();
+
+        }
+    };
+
   }
 
 

@@ -52,7 +52,7 @@ public class InstructionsMenu extends Activity {
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
 
-        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.ingrdientsImage), model.getDishesOfType(1));
+        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.ingrdientsImage), model.getDishesOfType(1),false);
 
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){
