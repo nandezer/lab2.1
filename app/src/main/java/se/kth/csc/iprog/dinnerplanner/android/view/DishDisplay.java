@@ -151,7 +151,7 @@ public class DishDisplay extends BaseAdapter{
     private void initiatePopupWindow(View view, int position) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.screen_popup,(ViewGroup) view.findViewById(R.id.popup_element));
-        pwindo = new PopupWindow(layout, 300, 370, true);
+        pwindo = new PopupWindow(layout, 500, 570, true);
         pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
         ExampleView popText = new ExampleView(layout.findViewById(R.id.nameDish), dishesName[position]);

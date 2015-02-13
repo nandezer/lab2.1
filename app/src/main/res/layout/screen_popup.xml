@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/popup_element"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#444444"
+    android:background="#ffffffff"
     android:orientation="vertical"
     android:padding="10sp" >
 
@@ -12,6 +12,17 @@
         android:adjustViewBounds="true"
         android:id="@+id/nameDish"
         layout="@layout/example_view" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:id="@+id/descriptionDish"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="200dp"
+        android:layout_below="@+id/nameDish"
+        layout="@layout/example_view" />
+
 
     <Button
         android:id="@+id/btn_close_popup"
