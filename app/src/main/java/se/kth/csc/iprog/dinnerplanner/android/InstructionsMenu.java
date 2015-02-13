@@ -3,18 +3,11 @@ package se.kth.csc.iprog.dinnerplanner.android;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import java.util.Set;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
-import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_Create;
 import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
@@ -51,8 +44,8 @@ public class InstructionsMenu extends Activity {
         ExampleView instructions = new ExampleView(findViewById(R.id.instruction_header),"Instructions");
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
-
-        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.ingrdientsImage), model.getDishesOfType(1),false);
+        //TODO: change to selected dishes!
+        DishDisplay selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getDishesOfType(1),false);
 
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){

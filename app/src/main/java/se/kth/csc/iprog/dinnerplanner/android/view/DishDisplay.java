@@ -142,6 +142,9 @@ public class DishDisplay extends BaseAdapter{
 
                     initiatePopupWindow(view, position);
                 }
+                else{
+
+                }
             }
         });
 
