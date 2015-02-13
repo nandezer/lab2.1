@@ -8,11 +8,6 @@
 
     <include
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        layout="@layout/border" />
-
-    <include
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:id="@+id/nameDish"

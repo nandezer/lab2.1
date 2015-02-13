@@ -135,7 +135,7 @@ public class DishDisplay extends BaseAdapter{
 
         ExampleView popDishName = new ExampleView(layout.findViewById(R.id.nameDish), dishesName[position]);
         ExampleView popDescription = new ExampleView(layout.findViewById(R.id.priceDish),
-                "Cost: "+String.valueOf(dishesPrice[position]*model.getNumberOfGuests()+"kr\n ("+ String.valueOf(dishesPrice[position])
+                "Cost: "+String.valueOf(dishesPrice[position]*model.getNumberOfGuests()+" kr\n ("+ String.valueOf(dishesPrice[position])
                 +" / Person)"));
         ImageView imageDishPopUp = (ImageView)layout.findViewById(R.id.image_selected_dish);
         imageDishPopUp.setImageResource(getImageId(mContext, dishesImages[position]));
