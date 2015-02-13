@@ -4,24 +4,27 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:layout_marginTop="200dp"
-    android:layout_marginLeft="10dp"
+    android:layout_marginLeft="5dp"
     android:id="@+id/this_is_selected_dish_view_id"
     android:background="#ffffffff">
 
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/ingredient_button"
         android:background="@drawable/icecream"
-        android:onClick="onClick"/>
+        android:onClick="onClick"
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:id="@+id/example_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ingredient_button"
-        android:text="ingredients"
+        android:text="Ingredients"
+        android:textSize = "12sp"
+        android:layout_marginTop="5dp"
         android:textColor="#ff000000" />
 
 

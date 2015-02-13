@@ -57,6 +57,15 @@
         android:layout_alignLeft="@+id/goBack"
         />
 
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/separator_line"
+        android:layout_below="@+id/selectedIngredients"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        layout= "@layout/separator_line"
+        />
     <!--
     <include
         android:layout_width="wrap_content"
@@ -87,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="5dp"
-        android:layout_below="@+id/selectedIngredients"
+        android:layout_below="@+id/separator_line"
         layout="@layout/dish_display_type"
         android:id="@+id/header" />
 

@@ -13,16 +13,16 @@
         android:onClick="onClick"
         layout="@layout/dish_display_image"
         android:layout_toRightOf="@+id/selectedIngredients"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="40dp"
 
         />
 
     <include
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textSize="7pt"
         android:id="@+id/selectedIngredients"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="2dp"
         layout="@layout/ingredients_button"
         android:layout_alignTop="@+id/ingredientsDish"
 
