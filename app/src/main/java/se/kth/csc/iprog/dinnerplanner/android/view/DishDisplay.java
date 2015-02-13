@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import android.widget.ImageView;
 
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
@@ -35,6 +38,14 @@ import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
 import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.PopupWindow;
+
 import static android.graphics.drawable.Drawable.*;
 
 /**
@@ -49,12 +60,12 @@ public class DishDisplay extends BaseAdapter{
     String[] dishesName;
     String[] dishesImages;
     GridView grid;
+    boolean chooseMenu = true;
 
 
-
-    public DishDisplay(Context c, View view, Set<Dish> dishes) {
+    public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu) {
         this.mContext = c;
-        //this.view = view;
+        this.chooseMenu =chooseMenu;
         this.dishes =dishes;
         dishesName = new String[dishes.size()];
         dishesImages = new String[dishes.size()];
@@ -105,39 +116,22 @@ public class DishDisplay extends BaseAdapter{
         return grid;
     }
     private void displayDishes(View view) {
-        grid = (GridView)view.findViewById(R.id.dish_display);
+        grid = (GridView) view.findViewById(R.id.dish_display);
         grid.setAdapter(this);
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-               /* new AlertDialog.Builder(mContext)
-                        .setTitle("Delete entry")
-                        .setMessage("Are you sure you want to delete this entry?")
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();*/
-                LayoutInflater inflater = (LayoutInflater) mContext
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                Dialog settingsDialog = new Dialog(mContext);
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.show();
+                if(chooseMenu){
 
+
+                }
             }
         });
 
     }
- }
+  }
 
 
 
