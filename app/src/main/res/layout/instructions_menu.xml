@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
         android:id = "@+id/instruction_header"
         android:layout_below="@+id/price_instructions"
         layout="@layout/selected_dish_name" />
@@ -50,40 +50,24 @@
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginTop="34dp"
         android:id="@+id/ingrdientsImage"
         android:onClick="onClick"
-        layout="@layout/dish_display_image" />
+        layout="@layout/dish_display_image"
+        android:layout_below="@+id/instruction_header"
+        android:layout_alignLeft="@+id/instruction_header"
+        android:layout_alignStart="@+id/instruction_header" />
+
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:textSize="7pt"
-        android:layout_below="@+id/ingrdientsImage"
         android:id="@+id/selectedIngredients"
-        layout="@layout/selected_dish_name" />
+        layout="@layout/ingredients_button"
+        android:layout_alignTop="@+id/ingrdientsImage"
+        android:layout_alignLeft="@+id/goBack"
+        android:layout_alignStart="@+id/goBack" />
 
-
-
-    <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="130dp"
-        android:id="@+id/dishImage"
-        android:onClick="onClick"
-        layout="@layout/dish_display_image" />
-    <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="130dp"
-        android:textSize="7pt"
-        android:layout_below="@+id/dishImage"
-        android:id="@+id/dishName"
-        layout="@layout/selected_dish_name" />
 
     <include
         android:layout_width="wrap_content"

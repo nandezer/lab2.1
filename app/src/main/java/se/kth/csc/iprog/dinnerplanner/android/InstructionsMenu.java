@@ -15,6 +15,7 @@ import java.util.Set;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_Create;
+import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
@@ -43,13 +44,15 @@ public class InstructionsMenu extends Activity {
         setContentView(R.layout.instructions_menu);
         Banner bannerView = new Banner(findViewById(R.id.banner_instructions));
         ExampleView ingredients = new ExampleView(findViewById(R.id.selectedIngredients),"Ingredients");
-        ExampleView Dish1 = new ExampleView(findViewById(R.id.dishName),"Dish1");
+
 
         float totalPrice = model.getTotalMenuPrice();
         ExampleView totalCost = new ExampleView(findViewById(R.id.price_instructions),"Total Cost: "+String.valueOf(totalPrice)+" kr");
         ExampleView instructions = new ExampleView(findViewById(R.id.instruction_header),"Instructions");
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
+
+        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.ingrdientsImage), model.getDishesOfType(1));
 
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){

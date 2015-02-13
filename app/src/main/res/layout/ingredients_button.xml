@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="200dp"
+    android:layout_marginLeft="10dp"
+    android:id="@+id/this_is_selected_dish_view_id"
+    android:background="#ffffffff">
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ingredient_button"
+        android:background="@drawable/icecream"
+        android:onClick="onClick"/>
+
+    <TextView
+        android:id="@+id/example_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingredient_button"
+        android:text="@string/ingredients"
+        android:textColor="#ff000000" />
+
+
+
+
+</RelativeLayout>
+
