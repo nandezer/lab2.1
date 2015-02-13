@@ -29,6 +29,7 @@ import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 public class ChooseMenu extends Activity {
     private DinnerModel model;
     GridView grid;
+    float totalPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Default call to load previous state
@@ -51,6 +52,9 @@ public class ChooseMenu extends Activity {
         DetailsDinner details = new DetailsDinner(findViewById(R.id.this_is_details_dinner_view_id), model);
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Create");
 
+        totalPrice = model.getTotalMenuPrice();
+        ExampleView totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");
+
     }
 
 
@@ -66,6 +70,9 @@ public class ChooseMenu extends Activity {
                 for(Dish d : model.getFullMenu()){
                     model.removeDishFromMenu(d);
                 }
+                totalPrice = model.getTotalMenuPrice();
+                ExampleView totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");
+
 
         }
     }

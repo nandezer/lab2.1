@@ -9,7 +9,7 @@ public class DinnerModel implements Serializable {
 
     Set<Dish> dishes = new HashSet<Dish>();
     Set<Dish> selectedDishes = new HashSet<Dish>();
-    int guestNum;
+    int guestNum = 1;
     int dishNum;
     /**
      * The constructor of the overall model. Set the default values here

@@ -33,7 +33,7 @@ import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 public class DishDisplay extends BaseAdapter{
 
     private Context mContext;
-   // View view;
+    View viewG;
     DinnerModel model;
     Set<Dish> dishes;
     String[] dishesName;
@@ -47,6 +47,9 @@ public class DishDisplay extends BaseAdapter{
     ImageButton btnClosePopup;
 
     public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model) {
+        creator(c, view, dishes, chooseMenu, model);
+     }
+    public void creator(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model){
         this.mContext = c;
         this.chooseMenu =chooseMenu;
         this.dishes =dishes;
@@ -67,7 +70,8 @@ public class DishDisplay extends BaseAdapter{
         }
         displayDishes(view.findViewById(R.id.dish_display));
 
-     }
+
+    }
     public int getCount() {
         return dishes.size();
     }
@@ -150,6 +154,7 @@ public class DishDisplay extends BaseAdapter{
         @Override
         public void onClick(View view) {
             model.addDishToMenu(vecDish.get(positionClick));
+            //creator(mContext,view,dishes,chooseMenu,model);
             pwindo.dismiss();
         }
     };
