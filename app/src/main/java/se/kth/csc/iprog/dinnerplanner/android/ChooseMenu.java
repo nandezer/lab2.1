@@ -42,12 +42,12 @@ public class ChooseMenu extends Activity {
         this.model = modelG;
         Banner bannerView = new Banner(findViewById(R.id.this_is_banner_view_id));
         ExampleView starters = new ExampleView(findViewById(R.id.starters), "Starters");
-        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1),true);
+        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1),true, model);
 
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
-        DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true);
+        DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true, model);
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
-        DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true);
+        DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model);
         DetailsDinner details = new DetailsDinner(findViewById(R.id.this_is_details_dinner_view_id), model);
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Create");
 

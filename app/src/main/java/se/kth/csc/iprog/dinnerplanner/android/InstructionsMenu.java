@@ -24,6 +24,7 @@ public class InstructionsMenu extends Activity {
     private  String instructionsMainCourse = "";
     private  String instructionsDesserts = "";
     private ExampleView toDisplay;
+    DishDisplay selectedItems;
     ExampleView headerInstructions;
 
     @Override
@@ -45,7 +46,7 @@ public class InstructionsMenu extends Activity {
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
         //TODO: change to selected dishes!
-        DishDisplay selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getDishesOfType(1),false);
+        selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getDishesOfType(1),false, model);
 
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){
@@ -76,6 +77,22 @@ public class InstructionsMenu extends Activity {
             case R.id.dish_display:
                 toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);
                 headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
+                break;
+            case R.id.ingredientsDish:
+              int selected = selectedItems.getPosition();
+              headerInstructions = new ExampleView(findViewById(R.id.header),String.valueOf(selected));
+                /*if(selected == 1){
+                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsStarter);
+                    headerInstructions = new ExampleView(findViewById(R.id.header),"Starter");
+                }
+                else if(selected ==2){
+                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsMainCourse);
+                    headerInstructions = new ExampleView(findViewById(R.id.header),"Main Course");
+                }
+                else if(selected ==3){
+                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsDesserts);
+                    headerInstructions = new ExampleView(findViewById(R.id.header),"Dessert");
+                }*/
         }
     }
 

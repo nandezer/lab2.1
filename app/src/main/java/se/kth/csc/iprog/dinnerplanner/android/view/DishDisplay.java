@@ -1,64 +1,30 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
 
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
-import android.widget.Toast;
 
 
-import java.util.HashSet;
 import java.util.Set;
-import java.util.Vector;
 
+import se.kth.csc.iprog.dinnerplanner.android.DinnerPlannerApplication;
 import se.kth.csc.iprog.dinnerplanner.android.R;
-import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
-import se.kth.csc.iprog.dinnerplanner.android.view.DetailsDinner;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
-import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.PopupWindow;
-
-import static android.graphics.drawable.Drawable.*;
+import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 
 /**
  * Created by Marc on 10/02/2015.
@@ -70,24 +36,28 @@ public class DishDisplay extends BaseAdapter{
     DinnerModel model;
     Set<Dish> dishes;
     String[] dishesName;
+    int[] dishesPrice;
     String[] dishesImages;
     GridView grid;
     boolean chooseMenu = true;
-
+    int positionClick;
     Button btnClosePopup;
-    Button btnCreatePopup;
 
-
-    public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu) {
+    public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model) {
         this.mContext = c;
         this.chooseMenu =chooseMenu;
         this.dishes =dishes;
+        this.model = model;
         dishesName = new String[dishes.size()];
         dishesImages = new String[dishes.size()];
+        dishesPrice = new int[dishes.size()];
         int i = 0;
         for(Dish d : dishes ){
             dishesName[i]= d.getName();
             dishesImages[i]= d.getImage();
+            for(Ingredient in : d.getIngredients()) {
+                dishesPrice[i] += (in.getPrice());
+            }
             i++;
         }
         displayDishes(view.findViewById(R.id.dish_display));
@@ -109,6 +79,9 @@ public class DishDisplay extends BaseAdapter{
 
     public static int getImageId(Context context, String imageName) {
         return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
+    }
+    public int getPosition(){
+        return this.positionClick;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -154,10 +127,14 @@ public class DishDisplay extends BaseAdapter{
     private void initiatePopupWindow(View view, int position) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.screen_popup,(ViewGroup) view.findViewById(R.id.popup_element));
-        pwindo = new PopupWindow(layout, 500, 570, true);
+        pwindo = new PopupWindow(layout, 900, 570, true);
         pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
-        ExampleView popText = new ExampleView(layout.findViewById(R.id.nameDish), dishesName[position]);
+        ExampleView popDishName = new ExampleView(layout.findViewById(R.id.nameDish), dishesName[position]);
+        ExampleView popDescription = new ExampleView(layout.findViewById(R.id.priceDish),
+                "Cost: "+String.valueOf(dishesPrice[position]*model.getNumberOfGuests()+"\n ("+ String.valueOf(dishesPrice[position])
+                +" / Person)"));
+
 
         btnClosePopup = (Button) layout.findViewById(R.id.btn_close_popup);
         btnClosePopup.setOnClickListener(cancel_button_click_listener);
