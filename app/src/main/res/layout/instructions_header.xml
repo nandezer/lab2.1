@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/this_is_instructions_header_id"
+    android:layout_height="match_parent">
+
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:id="@+id/ingredientsDish"
+        android:onClick="onClick"
+        layout="@layout/dish_display_image"
+        android:layout_toRightOf="@+id/selectedIngredients"
+        android:layout_marginLeft="15dp"
+
+        />
+
+    <include
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:textSize="7pt"
+        android:id="@+id/selectedIngredients"
+        android:layout_marginLeft="15dp"
+        layout="@layout/ingredients_button"
+        android:layout_alignTop="@+id/ingredientsDish"
+
+        />
+</RelativeLayout>

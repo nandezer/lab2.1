@@ -45,8 +45,19 @@
         android:layout_below="@+id/price_instructions"
         layout="@layout/selected_dish_name" />
 
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="7pt"
+        android:id="@+id/selectedIngredients"
+        android:layout_marginLeft="15dp"
+        layout="@layout/instructions_header"
+        android:layout_below="@+id/instruction_header"
+        android:layout_alignTop="@+id/ingredientsDish"
+        android:layout_alignLeft="@+id/goBack"
+        />
 
-
+    <!--
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,7 +81,7 @@
         android:layout_alignLeft="@+id/goBack"
          />
 
-
+-->
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

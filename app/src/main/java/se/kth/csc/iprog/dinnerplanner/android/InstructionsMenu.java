@@ -10,6 +10,7 @@ import java.util.Set;
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
+import se.kth.csc.iprog.dinnerplanner.android.view.Ingredients_header;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
 import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
@@ -46,7 +47,8 @@ public class InstructionsMenu extends Activity {
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
         //TODO: change to selected dishes!
-        selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getDishesOfType(1),false, model);
+        Ingredients_header selected_items = new Ingredients_header(this, findViewById(R.id.selectedIngredients),  model);
+        //selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getDishesOfType(1),false, model);
 
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){
@@ -81,18 +83,7 @@ public class InstructionsMenu extends Activity {
             case R.id.ingredientsDish:
               int selected = selectedItems.getPosition();
               headerInstructions = new ExampleView(findViewById(R.id.header),String.valueOf(selected));
-                /*if(selected == 1){
-                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsStarter);
-                    headerInstructions = new ExampleView(findViewById(R.id.header),"Starter");
-                }
-                else if(selected ==2){
-                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsMainCourse);
-                    headerInstructions = new ExampleView(findViewById(R.id.header),"Main Course");
-                }
-                else if(selected ==3){
-                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsDesserts);
-                    headerInstructions = new ExampleView(findViewById(R.id.header),"Dessert");
-                }*/
+
         }
     }
 
