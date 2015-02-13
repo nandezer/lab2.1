@@ -63,8 +63,9 @@ public class ChooseMenu extends Activity {
                 startActivity(i);
                 break;
             case R.id.banner:
-                this.model = new DinnerModel();
-                ((DinnerPlannerApplication)this.getApplication()).setModel(model);
+                for(Dish d : model.getFullMenu()){
+                    model.removeDishFromMenu(d);
+                }
 
         }
     }

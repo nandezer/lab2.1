@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/popup_element"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,29 +8,56 @@
 
     <include
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:id="@+id/nameDish"
-        layout="@layout/example_view" />
+        android:layout_height="match_parent"
+        layout="@layout/border" />
 
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="200dp"
-        android:id="@+id/priceDish"
-        android:layout_below="@+id/nameDish"
+        android:id="@+id/nameDish"
+        android:background="#ffffffff"
         layout="@layout/example_view" />
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceDish"
+        layout="@layout/example_view"
+        android:background="#ffffffff"
+        android:layout_below="@+id/nameDish"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/image_selected_dish" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_selected_dish"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/nameDish"
+        android:background="@drawable/bakedbrie" />
 
 
     <Button
-        android:id="@+id/btn_close_popup"
+        android:id="@+id/btn_choose_popup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Close" />
+        android:layout_marginTop="20dp"
+        android:text="Choose"
+        android:layout_below="@+id/image_selected_dish"
+        android:layout_centerHorizontal="true"/>
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/btn_close_popup"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/cross" />
+
+
+</RelativeLayout>
 
 

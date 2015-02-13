@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import android.view.View.OnClickListener;
@@ -19,8 +20,8 @@ import android.widget.BaseAdapter;
 
 
 import java.util.Set;
+import java.util.Vector;
 
-import se.kth.csc.iprog.dinnerplanner.android.DinnerPlannerApplication;
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
@@ -36,12 +37,14 @@ public class DishDisplay extends BaseAdapter{
     DinnerModel model;
     Set<Dish> dishes;
     String[] dishesName;
+    Vector<Dish> vecDish;
     int[] dishesPrice;
     String[] dishesImages;
     GridView grid;
     boolean chooseMenu = true;
     int positionClick;
-    Button btnClosePopup;
+    Button btnChoosePopup;
+    ImageButton btnClosePopup;
 
     public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model) {
         this.mContext = c;
@@ -51,10 +54,12 @@ public class DishDisplay extends BaseAdapter{
         dishesName = new String[dishes.size()];
         dishesImages = new String[dishes.size()];
         dishesPrice = new int[dishes.size()];
+        vecDish = new Vector<Dish>(dishes.size());
         int i = 0;
         for(Dish d : dishes ){
             dishesName[i]= d.getName();
             dishesImages[i]= d.getImage();
+            vecDish.add(d);
             for(Ingredient in : d.getIngredients()) {
                 dishesPrice[i] += (in.getPrice());
             }
@@ -80,9 +85,7 @@ public class DishDisplay extends BaseAdapter{
     public static int getImageId(Context context, String imageName) {
         return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
     }
-    public int getPosition(){
-        return this.positionClick;
-    }
+
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -110,7 +113,7 @@ public class DishDisplay extends BaseAdapter{
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
+                positionClick = position;
                 if(chooseMenu){
 
                     initiatePopupWindow(view, position);
@@ -127,24 +130,37 @@ public class DishDisplay extends BaseAdapter{
     private void initiatePopupWindow(View view, int position) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.screen_popup,(ViewGroup) view.findViewById(R.id.popup_element));
-        pwindo = new PopupWindow(layout, 900, 570, true);
+        pwindo = new PopupWindow(layout, 900, 650, true);
         pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
         ExampleView popDishName = new ExampleView(layout.findViewById(R.id.nameDish), dishesName[position]);
         ExampleView popDescription = new ExampleView(layout.findViewById(R.id.priceDish),
-                "Cost: "+String.valueOf(dishesPrice[position]*model.getNumberOfGuests()+"\n ("+ String.valueOf(dishesPrice[position])
+                "Cost: "+String.valueOf(dishesPrice[position]*model.getNumberOfGuests()+"kr\n ("+ String.valueOf(dishesPrice[position])
                 +" / Person)"));
+        ImageView imageDishPopUp = (ImageView)layout.findViewById(R.id.image_selected_dish);
+        imageDishPopUp.setImageResource(getImageId(mContext, dishesImages[position]));
 
 
-        btnClosePopup = (Button) layout.findViewById(R.id.btn_close_popup);
-        btnClosePopup.setOnClickListener(cancel_button_click_listener);
+        btnChoosePopup = (Button) layout.findViewById(R.id.btn_choose_popup);
+        btnClosePopup = (ImageButton) layout.findViewById(R.id.btn_close_popup);
+        btnClosePopup.setOnClickListener(close_button_click_listener);
+        btnChoosePopup.setOnClickListener(choose_button_click_listener);
     }
-    private OnClickListener cancel_button_click_listener = new OnClickListener() {
-        public void onClick(View v) {
+    private OnClickListener choose_button_click_listener = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            model.addDishToMenu(vecDish.get(positionClick));
             pwindo.dismiss();
-
         }
     };
+    private OnClickListener close_button_click_listener = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            pwindo.dismiss();
+        }
+    };
+
+
 
   }
 
