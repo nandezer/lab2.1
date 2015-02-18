@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
@@ -22,7 +23,8 @@ import android.widget.BaseAdapter;
 import java.util.Set;
 import java.util.Vector;
 
-import se.kth.csc.iprog.dinnerplanner.android.DinnerPlannerApplication;
+import se.kth.csc.iprog.dinnerplanner.android.ChooseMenu;
+import se.kth.csc.iprog.dinnerplanner.android.InstructionsMenu;
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
@@ -46,11 +48,13 @@ public class DishDisplay extends BaseAdapter{
     int positionClick;
     Button btnChoosePopup;
     ImageButton btnClosePopup;
+    ChooseMenu menuActivity;
+    InstructionsMenu instructionActivity;
 
-    public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model) {
-        creator(c, view, dishes, chooseMenu, model);
+    public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model, Activity act) {
+        creator(c, view, dishes, chooseMenu, model,act);
      }
-    public void creator(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model){
+    public void creator(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model,Activity act){
         this.mContext = c;
         this.chooseMenu =chooseMenu;
         viewG = view;
@@ -60,6 +64,8 @@ public class DishDisplay extends BaseAdapter{
         dishesImages = new String[dishes.size()];
         dishesPrice = new int[dishes.size()];
         vecDish = new Vector<Dish>(dishes.size());
+        if(chooseMenu)menuActivity = (ChooseMenu)act;
+        else instructionActivity = (InstructionsMenu)act;
         int i = 0;
         for(Dish d : dishes ){
             dishesName[i]= d.getName();
@@ -157,6 +163,8 @@ public class DishDisplay extends BaseAdapter{
         public void onClick(View view) {
             model.addDishToMenu(vecDish.get(positionClick));
             //creator(mContext,view,dishes,chooseMenu,model);
+            if(chooseMenu)menuActivity.runOnUiThread();
+            else instructionActivity.runOnUiThread();
             pwindo.dismiss();
         }
     };

@@ -10,7 +10,7 @@ import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 /**
  * Created by Isaac Rondon on 13-02-2015.
  */
-public class Ingredients_header {
+public class Ingredients_header extends Activity {
     View view;
     DinnerModel model;
     Context mContext;
@@ -19,8 +19,12 @@ public class Ingredients_header {
         this.view = view;
         this.model = model;
         this.mContext = c;
-        DishDisplay selectedItems = new DishDisplay(mContext, view.findViewById(R.id.ingredientsDish), model.getDishesOfType(1),false,model);
+        DishDisplay selectedItems = new DishDisplay(mContext, view.findViewById(R.id.ingredientsDish), model.getDishesOfType(1),false,model,this);
 
 
+    }
+
+    public void runOnUiThread() {
+        //displayScreen();
     }
 }

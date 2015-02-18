@@ -45,7 +45,7 @@ public class InstructionsMenu extends Activity {
         ExampleView instructions = new ExampleView(findViewById(R.id.instruction_header),"Instructions");
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
-        selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getFullMenu(),false, model);
+        selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getFullMenu(),false, model,this);
 
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){
@@ -77,23 +77,10 @@ public class InstructionsMenu extends Activity {
                 toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);
                 headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
                 break;
-            case R.id.ingredientsDish:
-              //int selected = selectedItems.getPosition();
-              //headerInstructions = new ExampleView(findViewById(R.id.header),String.valueOf(selected));
-                /*if(selected == 1){
-                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsStarter);
-                    headerInstructions = new ExampleView(findViewById(R.id.header),"Starter");
-                }
-                else if(selected ==2){
-                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsMainCourse);
-                    headerInstructions = new ExampleView(findViewById(R.id.header),"Main Course");
-                }
-                else if(selected ==3){
-                    toDisplay = new ExampleView(findViewById(R.id.instruction_dish),instructionsDesserts);
-                    headerInstructions = new ExampleView(findViewById(R.id.header),"Dessert");
-                }*/
         }
     }
 
+    public void runOnUiThread() {
 
+    }
 }
