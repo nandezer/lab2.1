@@ -45,7 +45,6 @@ public class InstructionsMenu extends Activity {
         ExampleView instructions = new ExampleView(findViewById(R.id.instruction_header),"Instructions");
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
-        //TODO: change to selected dishes!
         selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getFullMenu(),false, model);
 
         Set<Dish> allMaterial = model.getFullMenu();

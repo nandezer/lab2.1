@@ -22,6 +22,7 @@ import android.widget.BaseAdapter;
 import java.util.Set;
 import java.util.Vector;
 
+import se.kth.csc.iprog.dinnerplanner.android.DinnerPlannerApplication;
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
@@ -52,6 +53,7 @@ public class DishDisplay extends BaseAdapter{
     public void creator(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model){
         this.mContext = c;
         this.chooseMenu =chooseMenu;
+        viewG = view;
         this.dishes =dishes;
         this.model = model;
         dishesName = new String[dishes.size()];

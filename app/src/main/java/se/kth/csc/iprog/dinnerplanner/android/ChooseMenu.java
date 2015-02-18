@@ -29,6 +29,7 @@ import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 public class ChooseMenu extends Activity {
     private DinnerModel model;
     GridView grid;
+    ExampleView totalCost;
     float totalPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,11 @@ public class ChooseMenu extends Activity {
         // Set the view for the main activity screen
         // it must come before any call to findViewById method
         setContentView(R.layout.choose_menu);
+
+        displayScreen();
+    }
+
+    void displayScreen(){
 
         DinnerModel modelG = ((DinnerPlannerApplication) this.getApplication()).getModel();
         this.model = modelG;
@@ -53,7 +59,7 @@ public class ChooseMenu extends Activity {
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Create");
 
         totalPrice = model.getTotalMenuPrice();
-        ExampleView totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");
+        totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");
 
     }
 
@@ -63,15 +69,11 @@ public class ChooseMenu extends Activity {
             case R.id.button_start:
                 DinnerModel modelSend = this.model;
                 Intent i = new Intent(this, InstructionsMenu.class);
-                //i.putExtras("DinnerModel", modelSend);
                 startActivity(i);
                 break;
             case R.id.banner:
-                for(Dish d : model.getFullMenu()){
-                    model.removeDishFromMenu(d);
-                }
-                totalPrice = model.getTotalMenuPrice();
-                ExampleView totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");
+                ((DinnerPlannerApplication) this.getApplication()).setModel(new DinnerModel());
+                displayScreen();
 
 
         }
