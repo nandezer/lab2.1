@@ -59,7 +59,7 @@ public class ChooseMenu extends Activity {
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
         DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model,this);
         DetailsDinner details = new DetailsDinner(findViewById(R.id.this_is_details_dinner_view_id), model);
-        ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Create");
+        ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.this_is_buttons_start_create_view_id), "Create", this.model);
 
         totalPrice = model.getTotalMenuPrice();
         totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");

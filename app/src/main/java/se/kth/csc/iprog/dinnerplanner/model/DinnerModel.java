@@ -81,7 +81,6 @@ public class DinnerModel extends Observable implements Serializable {
         dish2.addIngredient(dish3ing11);
         dishes.add(dish3);
 
-
     }
 
     /**
