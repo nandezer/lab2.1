@@ -3,26 +3,18 @@ package se.kth.csc.iprog.dinnerplanner.android;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.AdapterView;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.TextView;
-
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Vector;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_Create;
 import se.kth.csc.iprog.dinnerplanner.android.view.DetailsDinner;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
-import se.kth.csc.iprog.dinnerplanner.model.Dish;
 import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 
 
@@ -31,6 +23,18 @@ public class ChooseMenu extends Activity {
     GridView grid;
     ExampleView totalCost;
     float totalPrice;
+    Spinner spinnerDropDown;
+    String[] numGuestsPossible = {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "9",
+            "10"
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Default call to load previous state
@@ -63,6 +67,28 @@ public class ChooseMenu extends Activity {
 
         totalPrice = model.getTotalMenuPrice();
         totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");
+
+
+        spinnerDropDown =(Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item , numGuestsPossible);
+        spinnerDropDown.setAdapter(adapter);
+        spinnerDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                // Get select item
+                int sid=spinnerDropDown.getSelectedItemPosition();
+                spinnerDropDown.setSelection(sid);
+                model.setNumberOfGuests(sid+1);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+
 
     }
 
