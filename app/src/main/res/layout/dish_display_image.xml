@@ -10,7 +10,7 @@
     <GridView
         android:numColumns="auto_fit"
         android:gravity="top"
-        android:columnWidth="75dp"
+        android:columnWidth="70dp"
         android:stretchMode="columnWidth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

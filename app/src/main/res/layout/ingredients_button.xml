@@ -10,21 +10,24 @@
 
 
     <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/ingredient_button"
         android:background="@drawable/icecream"
         android:onClick="onClick"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        />
 
     <TextView
         android:id="@+id/example_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ingredient_button"
+        android:layout_centerHorizontal="true"
         android:text="Ingredients"
         android:textSize = "12sp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:textColor="#ff000000" />
 
 

@@ -66,31 +66,7 @@
         android:layout_marginTop="10dp"
         layout= "@layout/separator_line"
         />
-    <!--
-    <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:id="@+id/ingredientsDish"
-        android:onClick="onClick"
-        layout="@layout/dish_display_image"
-        android:layout_toRightOf="@+id/selectedIngredients"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@+id/instruction_header"
- />
 
-    <include
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:textSize="7pt"
-        android:id="@+id/selectedIngredients"
-        android:layout_marginLeft="15dp"
-        layout="@layout/ingredients_button"
-        android:layout_alignTop="@+id/ingredientsDish"
-        android:layout_alignLeft="@+id/goBack"
-         />
-
--->
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

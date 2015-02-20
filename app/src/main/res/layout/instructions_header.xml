@@ -13,7 +13,7 @@
         android:onClick="onClick"
         layout="@layout/dish_display_image"
         android:layout_toRightOf="@+id/selectedIngredients"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="30dp"
 
         />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:textSize="7pt"
         android:id="@+id/selectedIngredients"
-        android:layout_marginLeft="2dp"
+        android:layout_marginLeft="1dp"
         layout="@layout/ingredients_button"
         android:layout_alignTop="@+id/ingredientsDish"
 
