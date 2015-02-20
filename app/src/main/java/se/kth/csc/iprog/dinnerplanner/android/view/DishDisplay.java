@@ -131,7 +131,8 @@ public class DishDisplay extends BaseAdapter{
                     initiatePopupWindow(view, position);
                 }
                 else{
-
+                    //instructionActivity.runOnUiThread(vecDish.get(positionClick).getName());
+                    instructionActivity.runOnUiThread(positionClick);
                 }
             }
         });
@@ -164,7 +165,6 @@ public class DishDisplay extends BaseAdapter{
             model.addDishToMenu(vecDish.get(positionClick));
             //creator(mContext,view,dishes,chooseMenu,model);
             if(chooseMenu)menuActivity.runOnUiThread();
-            else instructionActivity.runOnUiThread();
             pwindo.dismiss();
         }
     };
