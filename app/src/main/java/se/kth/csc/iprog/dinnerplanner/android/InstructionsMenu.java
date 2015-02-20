@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import java.util.Set;
+import java.util.Vector;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
@@ -24,6 +25,8 @@ public class InstructionsMenu extends Activity {
     private  String instructionsMainCourse = "";
     private  String instructionsDesserts = "";
     private ExampleView toDisplay;
+    Vector<Dish> vecDish;
+
     DishDisplay selectedItems;
     ExampleView headerInstructions;
 
@@ -46,20 +49,12 @@ public class InstructionsMenu extends Activity {
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
         selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getFullMenu(),false, model,this);
-
+        vecDish = new Vector<Dish>((model.getFullMenu()).size());
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){
+            vecDish.add(d);
             for(Ingredient i : d.getIngredients()){
                 listIngredients += i.getName()+"  "+String.valueOf(i.getQuantity())+" "+i.getUnit()+"\n";
-            }
-            if(d.getType() == 1){
-                instructionsStarter = d.getName()+"\n" + d.getDescription()+"\n";
-            }
-            else if(d.getType() == 2){
-                instructionsMainCourse = d.getName()+"\n" + d.getDescription()+"\n";
-            }
-            else if(d.getType() == 3){
-                instructionsDesserts = d.getName()+"\n" + d.getDescription()+"\n";
             }
         }
         toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);
@@ -80,7 +75,10 @@ public class InstructionsMenu extends Activity {
         }
     }
 
-    public void runOnUiThread() {
-
+    public void runOnUiThread(int dishposition) {
+        String dishName = (vecDish.get(dishposition)).getName();
+        String dishDescription = (vecDish.get(dishposition)).getDescription();
+        toDisplay = new ExampleView(findViewById(R.id.instruction_dish),dishDescription);
+        headerInstructions = new ExampleView(findViewById(R.id.header),dishName);
     }
 }
