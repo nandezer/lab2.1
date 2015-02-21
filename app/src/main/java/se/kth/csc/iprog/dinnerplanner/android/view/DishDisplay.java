@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.BaseAdapter;
 
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 import java.util.Vector;
 
@@ -33,7 +35,7 @@ import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 /**
  * Created by Marc on 10/02/2015.
  */
-public class DishDisplay extends BaseAdapter{
+public class DishDisplay extends BaseAdapter implements Observer{
 
     private Context mContext;
     View viewG;
@@ -175,7 +177,11 @@ public class DishDisplay extends BaseAdapter{
         }
     };
 
+    @Override
+    public void update(Observable observable, Object data) {
+        // This method is notified after data changes.
 
+    }
 
   }
 

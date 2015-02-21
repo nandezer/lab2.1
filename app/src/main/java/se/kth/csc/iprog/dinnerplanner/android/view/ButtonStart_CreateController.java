@@ -38,8 +38,8 @@ public class ButtonStart_CreateController implements OnClickListener  {
                 v.getContext().startActivity(intent);
 
          }else if(!start && view.start == v){
-            Intent i = new Intent(v.getContext(), InstructionsMenu.class);
-            v.getContext().startActivity(i);
+                Intent intent = new Intent(v.getContext(), InstructionsMenu.class);
+                v.getContext().startActivity(intent);
         }
     }
 }
