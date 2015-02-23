@@ -14,7 +14,7 @@ public class ButtonStart_Create implements Observer {
 
 	View view;
     DinnerModel model;
-    public Button start;
+    Button start;
 
 	public ButtonStart_Create(View view, String text, DinnerModel model) {
 
@@ -24,7 +24,6 @@ public class ButtonStart_Create implements Observer {
         model.addObserver(this);
         start = (Button) view.findViewById(R.id.button_start);
         start.setText(text);
-		// Setup the rest of the view layout
 	}
     @Override
     public void update(Observable observable, Object data) {

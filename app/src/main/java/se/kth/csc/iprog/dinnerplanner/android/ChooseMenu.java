@@ -24,6 +24,7 @@ import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_Create;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_CreateController;
 import se.kth.csc.iprog.dinnerplanner.android.view.DetailsDinner;
+import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay_Controller;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
@@ -71,7 +72,8 @@ public class ChooseMenu extends Activity implements Observer {
         //Set Starters Area
         ExampleView starters = new ExampleView(findViewById(R.id.starters), "Starters");
         //Set list of Starters to show
-        DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1),true, model,this);
+       // DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1),true, model,this);
+       // DishDisplay_Controller startersController = new DishDisplay_Controller(this.model,startersItems,this,true, this);
 
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
         DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true, model,this);

@@ -35,7 +35,7 @@ import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 /**
  * Created by Marc on 10/02/2015.
  */
-public class DishDisplay extends BaseAdapter implements Observer{
+public class DishDisplay implements Observer{
 
     private Context mContext;
     View viewG;
@@ -47,11 +47,11 @@ public class DishDisplay extends BaseAdapter implements Observer{
     String[] dishesImages;
     GridView grid;
     boolean chooseMenu = true;
-    int positionClick;
+    /*int positionClick;
     Button btnChoosePopup;
     ImageButton btnClosePopup;
     ChooseMenu menuActivity;
-    InstructionsMenu instructionActivity;
+    InstructionsMenu instructionActivity;*/
 
     public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model, Activity act) {
         creator(c, view, dishes, chooseMenu, model,act);
@@ -66,6 +66,9 @@ public class DishDisplay extends BaseAdapter implements Observer{
         dishesImages = new String[dishes.size()];
         dishesPrice = new int[dishes.size()];
         vecDish = new Vector<Dish>(dishes.size());
+        //Register the view as an observer of the model
+        model.addObserver(this);
+        /*
         if(chooseMenu)menuActivity = (ChooseMenu)act;
         else instructionActivity = (InstructionsMenu)act;
         int i = 0;
@@ -78,10 +81,13 @@ public class DishDisplay extends BaseAdapter implements Observer{
             }
             i++;
         }
-        displayDishes(view.findViewById(R.id.dish_display));
+        */
+        grid = (GridView) view.findViewById(R.id.dish_display);
+        //displayDishes(view.findViewById(R.id.dish_display));
 
 
     }
+    /*
     public int getCount() {
         return dishes.size();
     }
@@ -176,7 +182,7 @@ public class DishDisplay extends BaseAdapter implements Observer{
             pwindo.dismiss();
         }
     };
-
+*/
     @Override
     public void update(Observable observable, Object data) {
         // This method is notified after data changes.
