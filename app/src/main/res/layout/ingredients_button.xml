@@ -5,6 +5,7 @@
     android:gravity="center"
     android:layout_marginTop="200dp"
     android:layout_marginLeft="5dp"
+    android:onClick="onClick"
     android:id="@+id/this_is_selected_dish_view_id"
     android:background="#ffffffff">
 

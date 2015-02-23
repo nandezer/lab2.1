@@ -21,9 +21,6 @@ public class InstructionsMenu extends Activity {
 
     private DinnerModel model;
     private  String listIngredients = "";
-    private  String instructionsStarter = "";
-    private  String instructionsMainCourse = "";
-    private  String instructionsDesserts = "";
     private ExampleView toDisplay;
     Vector<Dish> vecDish;
 
@@ -72,6 +69,15 @@ public class InstructionsMenu extends Activity {
                 toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);
                 headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
                 break;
+            case R.id.selectedIngredients:
+                toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);
+                headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
+                break;
+            case R.id.ingredient_button:
+                toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);
+                headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
+                break;
+
         }
     }
 
