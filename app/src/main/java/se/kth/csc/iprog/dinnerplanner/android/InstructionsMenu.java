@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
 import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
+import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay_Controller;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
@@ -46,6 +47,9 @@ public class InstructionsMenu extends Activity {
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
         //selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getFullMenu(),false, model,this);
+        selectedItems = new DishDisplay(model, findViewById(R.id.ingredientsDish));
+        DishDisplay_Controller selectedItemsController = new DishDisplay_Controller(this.model,selectedItems,this,false, this,1);
+
         vecDish = new Vector<Dish>((model.getFullMenu()).size());
         Set<Dish> allMaterial = model.getFullMenu();
         for (Dish d : allMaterial){

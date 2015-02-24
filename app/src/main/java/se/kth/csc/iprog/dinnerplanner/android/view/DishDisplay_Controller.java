@@ -48,7 +48,10 @@ public class DishDisplay_Controller implements GridView.OnItemClickListener {
         this.view = view;
         this.mContext = c;
         this.chooseMenu = menu;
-        Set<Dish> dishes = model.getDishesOfType(type);
+        Set<Dish> dishes;
+        //Dishes according  screen
+        if(chooseMenu) dishes = model.getDishesOfType(type);
+        else dishes= model.getFullMenu();
         dishesName = new String[dishes.size()];
         dishesImages = new String[dishes.size()];
         dishesPrice = new int[dishes.size()];
