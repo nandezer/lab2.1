@@ -21,7 +21,7 @@ public class ButtonStart_Create implements Observer {
 		// store in the class the reference to the Android View
 		this.view = view;
         this.model = model;
-        model.addObserver(this);
+        this.model.addObserver(this);
         start = (Button) view.findViewById(R.id.button_start);
         start.setText(text);
 	}

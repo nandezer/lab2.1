@@ -55,9 +55,20 @@ public class DishDisplay implements Observer{
 
     public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model, Activity act) {
         creator(c, view, dishes, chooseMenu, model,act);
-     }
+    }
+
+    public DishDisplay( DinnerModel model, View view) {
+        this.model.addObserver(this);
+        //model.addObserver(this);
+        grid = (GridView) view.findViewById(R.id.dish_display);
+    }
+    @Override
+    public void update(Observable observable, Object data) {
+        // This method is notified after data changes.
+
+    }
     public void creator(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model,Activity act){
-        this.mContext = c;
+       /* this.mContext = c;
         this.chooseMenu =chooseMenu;
         viewG = view;
         this.dishes =dishes;
@@ -66,8 +77,10 @@ public class DishDisplay implements Observer{
         dishesImages = new String[dishes.size()];
         dishesPrice = new int[dishes.size()];
         vecDish = new Vector<Dish>(dishes.size());
+        */
         //Register the view as an observer of the model
         model.addObserver(this);
+        grid = (GridView) view.findViewById(R.id.dish_display);
         /*
         if(chooseMenu)menuActivity = (ChooseMenu)act;
         else instructionActivity = (InstructionsMenu)act;
@@ -82,7 +95,7 @@ public class DishDisplay implements Observer{
             i++;
         }
         */
-        grid = (GridView) view.findViewById(R.id.dish_display);
+
         //displayDishes(view.findViewById(R.id.dish_display));
 
 
@@ -183,11 +196,7 @@ public class DishDisplay implements Observer{
         }
     };
 */
-    @Override
-    public void update(Observable observable, Object data) {
-        // This method is notified after data changes.
 
-    }
 
   }
 
