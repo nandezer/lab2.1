@@ -77,13 +77,13 @@ public class ChooseMenu extends Activity implements Observer {
         DishDisplay_Controller startersController = new DishDisplay_Controller(this.model,startersItems,this,true, this,1);
 
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
-        DishDisplay mainCoursesItems = new DishDisplay(model, findViewById(R.id.startersImage));
+        DishDisplay mainCoursesItems = new DishDisplay(model, findViewById(R.id.mainCourseImage));
         DishDisplay_Controller mainCoursesController = new DishDisplay_Controller(this.model,mainCoursesItems,this,true, this,2);
         //DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true, model,this);
 
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
        // DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model,this);
-        DishDisplay dessertsItems = new DishDisplay(model, findViewById(R.id.startersImage));
+        DishDisplay dessertsItems = new DishDisplay(model, findViewById(R.id.dessertsImage));
         DishDisplay_Controller dessertsController = new DishDisplay_Controller(this.model,dessertsItems,this,true, this,3);
 
 
