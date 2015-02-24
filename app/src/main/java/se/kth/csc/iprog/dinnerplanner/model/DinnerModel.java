@@ -10,7 +10,7 @@ public class DinnerModel extends Observable implements Serializable {
 
     Set<Dish> dishes = new HashSet<Dish>();
     Set<Dish> selectedDishes = new HashSet<Dish>();
-    int guestNum = 1;
+    int guestNum;
     int dishNum;
     /**
      * The constructor of the overall model. Set the default values here
@@ -177,13 +177,15 @@ public class DinnerModel extends Observable implements Serializable {
     }
 
     /**
-     * Returns the total price of the menu (all the ingredients multiplied by number of guests).
+     * Returns the total price of the menu (all the ingredients need to be multiplied by number of guests).
      */
     public float getTotalMenuPrice(){
+        int guest = getNumberOfGuests();
         float price = 0;
         for (Dish d : selectedDishes){
             for(Ingredient i : d.getIngredients()){
-                price += (i.getPrice()*guestNum);
+                //price += (i.getPrice()*guest);
+                price += (i.getPrice());
             }
         }
         return price;

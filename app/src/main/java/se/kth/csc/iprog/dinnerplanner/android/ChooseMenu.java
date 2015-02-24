@@ -56,47 +56,48 @@ public class ChooseMenu extends Activity implements Observer {
         // Set the view for the main activity screen
         // it must come before any call to findViewById method
         setContentView(R.layout.choose_menu);
+        DinnerModel modelG = ((DinnerPlannerApplication) this.getApplication()).getModel();
+        this.model = modelG;
 
         displayScreen();
+        displayPrice();
     }
     public void runOnUiThread() {
-        displayScreen();
+        displayPrice();
     }
 
-    void displayScreen(){
+    void displayScreen() {
 
-        DinnerModel modelG = ((DinnerPlannerApplication) this.getApplication()).getModel();
-        model = modelG;
+
         //Set banner
         Banner bannerView = new Banner(findViewById(R.id.banner));
         //Set Starters Area
         ExampleView starters = new ExampleView(findViewById(R.id.starters), "Starters");
         //Set list of Starters to show
         //DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1),true, model,this);
-        DishDisplay startersItems = new DishDisplay(model, findViewById(R.id.startersImage));
-        DishDisplay_Controller startersController = new DishDisplay_Controller(this.model,startersItems,this,true, this,1);
+        DishDisplay startersItems = new DishDisplay(this.model, findViewById(R.id.startersImage));
+        DishDisplay_Controller startersController = new DishDisplay_Controller(this.model, startersItems, this, true, this, 1);
 
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
-        DishDisplay mainCoursesItems = new DishDisplay(model, findViewById(R.id.mainCourseImage));
-        DishDisplay_Controller mainCoursesController = new DishDisplay_Controller(this.model,mainCoursesItems,this,true, this,2);
+        DishDisplay mainCoursesItems = new DishDisplay(this.model, findViewById(R.id.mainCourseImage));
+        DishDisplay_Controller mainCoursesController = new DishDisplay_Controller(this.model, mainCoursesItems, this, true, this, 2);
         //DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true, model,this);
 
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
-       // DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model,this);
-        DishDisplay dessertsItems = new DishDisplay(model, findViewById(R.id.dessertsImage));
-        DishDisplay_Controller dessertsController = new DishDisplay_Controller(this.model,dessertsItems,this,true, this,3);
+        // DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model,this);
+        DishDisplay dessertsItems = new DishDisplay(this.model, findViewById(R.id.dessertsImage));
+        DishDisplay_Controller dessertsController = new DishDisplay_Controller(this.model, dessertsItems, this, true, this, 3);
 
 
-        DetailsDinner details = new DetailsDinner(findViewById(R.id.guestsID), model);
+        DetailsDinner details = new DetailsDinner(findViewById(R.id.guestsID), this.model);
         //Set "Create" button
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.button_start), "Create", this.model);
-        ButtonStart_CreateController startController = new ButtonStart_CreateController(this.model, start,false );
+        ButtonStart_CreateController startController = new ButtonStart_CreateController(this.model, start, false);
 
-        totalPrice = model.getTotalMenuPrice();
-        totalCost = new ExampleView(findViewById(R.id.price_menu),"Total Cost: "+String.valueOf(totalPrice)+" kr");
 
 
         spinnerDropDown =(Spinner)findViewById(R.id.spinner);
+        spinnerDropDown.setSelection(this.model.getNumberOfGuests());
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item , numGuestsPossible);
         spinnerDropDown.setAdapter(adapter);
         spinnerDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -107,16 +108,27 @@ public class ChooseMenu extends Activity implements Observer {
                 // Get select item
                 int sid=spinnerDropDown.getSelectedItemPosition();
                 spinnerDropDown.setSelection(sid);
-                model.setNumberOfGuests(sid+1);
+                setNumberGuests(sid+1);
+                displayPrice();
             }
+
+
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // TODO Auto-generated method stub
             }
         });
+    }
+
+    private void setNumberGuests(int number) {
+        this.model.setNumberOfGuests(number);
+    }
 
 
-
+    void displayPrice(){
+        totalPrice = model.getTotalMenuPrice()*this.model.getNumberOfGuests();
+        totalCost = new ExampleView(findViewById(R.id.price_menu), "Total Cost: " + String.valueOf(totalPrice) + " kr");
     }
 
     public void onClick(View view) {
@@ -124,6 +136,7 @@ public class ChooseMenu extends Activity implements Observer {
             case R.id.banner:
                 ((DinnerPlannerApplication) this.getApplication()).setModel(new DinnerModel());
                 displayScreen();
+                displayPrice();
 
 
         }
