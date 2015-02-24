@@ -41,12 +41,11 @@ public class InstructionsMenu extends Activity {
         ExampleView ingredients = new ExampleView(findViewById(R.id.selectedIngredients),"Ingredients");
 
 
-        float totalPrice = model.getTotalMenuPrice();
+        float totalPrice = model.getTotalMenuPrice()*model.getNumberOfGuests();
         ExampleView totalCost = new ExampleView(findViewById(R.id.price_instructions),"Total Cost: "+String.valueOf(totalPrice)+" kr");
         ExampleView instructions = new ExampleView(findViewById(R.id.instruction_header),"Instructions");
         //DYNAMIC
         headerInstructions = new ExampleView(findViewById(R.id.header),"Ingredients");
-        //selectedItems = new DishDisplay(this, findViewById(R.id.ingredientsDish), model.getFullMenu(),false, model,this);
         selectedItems = new DishDisplay(model, findViewById(R.id.ingredientsDish));
         DishDisplay_Controller selectedItemsController = new DishDisplay_Controller(this.model,selectedItems,this,false, this,1);
 
@@ -59,8 +58,7 @@ public class InstructionsMenu extends Activity {
             }
         }
         toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);
-
-    }
+   }
 
 
 

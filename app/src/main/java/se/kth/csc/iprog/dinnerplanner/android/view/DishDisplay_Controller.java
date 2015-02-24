@@ -29,7 +29,6 @@ import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 public class DishDisplay_Controller implements GridView.OnItemClickListener {
     DinnerModel model;
     DishDisplay view;
-    boolean start;
     Context mContext;
     int positionClick;
     boolean chooseMenu;

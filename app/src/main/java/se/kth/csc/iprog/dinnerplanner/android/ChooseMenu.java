@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.Banner;
+import se.kth.csc.iprog.dinnerplanner.android.view.Banner_Controller;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_Create;
 import se.kth.csc.iprog.dinnerplanner.android.view.ButtonStart_CreateController;
 import se.kth.csc.iprog.dinnerplanner.android.view.DetailsDinner;
@@ -31,7 +32,7 @@ import se.kth.csc.iprog.dinnerplanner.model.Dish;
 import se.kth.csc.iprog.dinnerplanner.android.view.DishDisplay;
 
 
-public class ChooseMenu extends Activity implements Observer {
+public class ChooseMenu extends Activity  {
     private DinnerModel model;
     GridView grid;
     ExampleView totalCost;
@@ -66,27 +67,26 @@ public class ChooseMenu extends Activity implements Observer {
         displayPrice();
     }
 
-    void displayScreen() {
-
-
+    public void displayScreen() {
+    
+        DinnerModel modelG = ((DinnerPlannerApplication) this.getApplication()).getModel();
+        model = modelG;
         //Set banner
         Banner bannerView = new Banner(findViewById(R.id.banner));
+        Banner_Controller bannerViewController = new Banner_Controller(bannerView,model,this,this);
         //Set Starters Area
         ExampleView starters = new ExampleView(findViewById(R.id.starters), "Starters");
         //Set list of Starters to show
-        //DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1),true, model,this);
-        DishDisplay startersItems = new DishDisplay(this.model, findViewById(R.id.startersImage));
-        DishDisplay_Controller startersController = new DishDisplay_Controller(this.model, startersItems, this, true, this, 1);
+        DishDisplay startersItems = new DishDisplay(model, findViewById(R.id.startersImage));
+        DishDisplay_Controller startersController = new DishDisplay_Controller(this.model,startersItems,this,true, this,1);
 
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
-        DishDisplay mainCoursesItems = new DishDisplay(this.model, findViewById(R.id.mainCourseImage));
-        DishDisplay_Controller mainCoursesController = new DishDisplay_Controller(this.model, mainCoursesItems, this, true, this, 2);
-        //DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true, model,this);
+        DishDisplay mainCoursesItems = new DishDisplay(model, findViewById(R.id.mainCourseImage));
+        DishDisplay_Controller mainCoursesController = new DishDisplay_Controller(this.model,mainCoursesItems,this,true, this,2);
 
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
-        // DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model,this);
-        DishDisplay dessertsItems = new DishDisplay(this.model, findViewById(R.id.dessertsImage));
-        DishDisplay_Controller dessertsController = new DishDisplay_Controller(this.model, dessertsItems, this, true, this, 3);
+        DishDisplay dessertsItems = new DishDisplay(model, findViewById(R.id.dessertsImage));
+        DishDisplay_Controller dessertsController = new DishDisplay_Controller(this.model,dessertsItems,this,true, this,3);
 
 
         DetailsDinner details = new DetailsDinner(findViewById(R.id.guestsID), this.model);
@@ -108,7 +108,7 @@ public class ChooseMenu extends Activity implements Observer {
                 // Get select item
                 int sid=spinnerDropDown.getSelectedItemPosition();
                 spinnerDropDown.setSelection(sid);
-                setNumberGuests(sid+1);
+                setNumberGuests(sid + 1);
                 displayPrice();
             }
 
@@ -126,7 +126,7 @@ public class ChooseMenu extends Activity implements Observer {
     }
 
 
-    void displayPrice(){
+    public void displayPrice(){
         totalPrice = model.getTotalMenuPrice()*this.model.getNumberOfGuests();
         totalCost = new ExampleView(findViewById(R.id.price_menu), "Total Cost: " + String.valueOf(totalPrice) + " kr");
     }
@@ -141,8 +141,10 @@ public class ChooseMenu extends Activity implements Observer {
 
         }
     }
+   /*
     @Override
     public void update(Observable observable, Object data) {
         // This method is notified after data changes.
     }
+    */
 }
