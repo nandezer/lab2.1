@@ -74,12 +74,19 @@ public class ChooseMenu extends Activity implements Observer {
         //Set list of Starters to show
         //DishDisplay startersItems = new DishDisplay(this, findViewById(R.id.startersImage), model.getDishesOfType(1),true, model,this);
         DishDisplay startersItems = new DishDisplay(model, findViewById(R.id.startersImage));
-        DishDisplay_Controller startersController = new DishDisplay_Controller(this.model,startersItems,this,true, this);
+        DishDisplay_Controller startersController = new DishDisplay_Controller(this.model,startersItems,this,true, this,1);
 
         ExampleView mainCourses = new ExampleView(findViewById(R.id.mainCourses), "Main Courses");
+        DishDisplay mainCoursesItems = new DishDisplay(model, findViewById(R.id.startersImage));
+        DishDisplay_Controller mainCoursesController = new DishDisplay_Controller(this.model,mainCoursesItems,this,true, this,2);
         //DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true, model,this);
+
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
        // DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model,this);
+        DishDisplay dessertsItems = new DishDisplay(model, findViewById(R.id.startersImage));
+        DishDisplay_Controller dessertsController = new DishDisplay_Controller(this.model,dessertsItems,this,true, this,3);
+
+
         DetailsDinner details = new DetailsDinner(findViewById(R.id.guestsID), model);
         //Set "Create" button
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.button_start), "Create", this.model);
