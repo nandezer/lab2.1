@@ -2,15 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/this_is_total_cost_id"
+    android:gravity="top"
+    android:id="@+id/title_type"
     android:background="#ffffffff">
 
+
     <TextView
-        android:id="@+id/example_text"
+        android:id="@+id/chooseMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10pt"
-        android:text="@string/totalCost"
+        android:textSize="17pt"
+        android:text="@string/chooseMenu"
         android:textColor="#ff000000" />
+
+
 
 </RelativeLayout>

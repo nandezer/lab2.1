@@ -11,25 +11,44 @@
     android:background="#ffffffff">
 
 
+    <include
+        android:id="@+id/banner"
+        layout="@layout/banner" />
 
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        layout="@layout/details_dinner" />
-
-    <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="160dp"
+        android:layout_below="@+id/banner"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
         android:id="@+id/price_menu"
         layout="@layout/total_cost" />
 
+
     <include
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        layout="@layout/banner" />
+        android:layout_below="@+id/banner"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@id/price_menu"
+        android:id="@+id/guestsID"
+        layout="@layout/details_dinner" />
+
+
+
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/guestsID"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/detail_dinner"
+        layout="@layout/title_type" />
+
+
+
+
 
 
     <include

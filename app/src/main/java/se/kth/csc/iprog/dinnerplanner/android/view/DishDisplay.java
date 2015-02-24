@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.BaseAdapter;
 
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 import java.util.Vector;
 
@@ -33,7 +35,7 @@ import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 /**
  * Created by Marc on 10/02/2015.
  */
-public class DishDisplay extends BaseAdapter{
+public class DishDisplay implements Observer{
 
     private Context mContext;
     View viewG;
@@ -45,17 +47,29 @@ public class DishDisplay extends BaseAdapter{
     String[] dishesImages;
     GridView grid;
     boolean chooseMenu = true;
-    int positionClick;
+    /*int positionClick;
     Button btnChoosePopup;
     ImageButton btnClosePopup;
     ChooseMenu menuActivity;
-    InstructionsMenu instructionActivity;
+    InstructionsMenu instructionActivity;*/
 
     public DishDisplay(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model, Activity act) {
         creator(c, view, dishes, chooseMenu, model,act);
-     }
+    }
+
+    public DishDisplay( DinnerModel model, View view) {
+        this.model = model;
+        this.model.addObserver(this);
+        //model.addObserver(this);
+        grid = (GridView) view.findViewById(R.id.dish_display);
+    }
+    @Override
+    public void update(Observable observable, Object data) {
+        // This method is notified after data changes.
+
+    }
     public void creator(Context c, View view, Set<Dish> dishes, boolean chooseMenu, DinnerModel model,Activity act){
-        this.mContext = c;
+       /* this.mContext = c;
         this.chooseMenu =chooseMenu;
         viewG = view;
         this.dishes =dishes;
@@ -64,6 +78,11 @@ public class DishDisplay extends BaseAdapter{
         dishesImages = new String[dishes.size()];
         dishesPrice = new int[dishes.size()];
         vecDish = new Vector<Dish>(dishes.size());
+        */
+        //Register the view as an observer of the model
+        model.addObserver(this);
+        grid = (GridView) view.findViewById(R.id.dish_display);
+        /*
         if(chooseMenu)menuActivity = (ChooseMenu)act;
         else instructionActivity = (InstructionsMenu)act;
         int i = 0;
@@ -76,10 +95,13 @@ public class DishDisplay extends BaseAdapter{
             }
             i++;
         }
-        displayDishes(view.findViewById(R.id.dish_display));
+        */
+
+        //displayDishes(view.findViewById(R.id.dish_display));
 
 
     }
+    /*
     public int getCount() {
         return dishes.size();
     }
@@ -174,7 +196,7 @@ public class DishDisplay extends BaseAdapter{
             pwindo.dismiss();
         }
     };
-
+*/
 
 
   }
