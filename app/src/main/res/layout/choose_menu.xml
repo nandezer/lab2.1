@@ -16,45 +16,36 @@
         layout="@layout/banner" />
 
     <include
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/banner"
         android:layout_marginTop="15dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/price_menu"
-        layout="@layout/total_cost" />
-
-
-    <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/banner"
-        android:layout_marginTop="15dp"
-        android:layout_toLeftOf="@id/price_menu"
+        android:layout_alignParentLeft="true"
         android:id="@+id/guestsID"
         layout="@layout/details_dinner" />
 
-
-
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/banner"
+        android:layout_marginTop="17dp"
+        android:layout_toRightOf="@+id/guestsID"
+        android:id="@+id/price_menu"
+        layout="@layout/total_cost" />
 
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/guestsID"
+        android:layout_below="@+id/price_menu"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:id="@+id/detail_dinner"
         layout="@layout/title_type" />
 
-
-
-
-
-
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_below="@+id/detail_dinner"
         android:layout_marginLeft="10dp"
         layout="@layout/dish_display_type"
         android:id="@+id/starters" />

@@ -8,7 +8,6 @@
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
         android:id="@+id/ingredientsDish"
         android:onClick="onClick"
         layout="@layout/dish_display_image"
