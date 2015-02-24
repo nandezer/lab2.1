@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements Observer{
                 "Here you will be able to easily plan your dinner.\n\n" +
                 "On the next page start by selecting number of participants. Then select your courses.\n\n"+
                 " Watch Magic Happen!");
-        Banner bannerView = new Banner(findViewById(R.id.this_is_banner_view_id));
+        Banner bannerView = new Banner(findViewById(R.id.banner));
         //Setting start button
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.button_start), "Start", this.model);
         ButtonStart_CreateController startController = new ButtonStart_CreateController(this.model, start, true);

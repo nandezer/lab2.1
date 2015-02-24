@@ -58,6 +58,7 @@ public class DishDisplay implements Observer{
     }
 
     public DishDisplay( DinnerModel model, View view) {
+        this.model = model;
         this.model.addObserver(this);
         //model.addObserver(this);
         grid = (GridView) view.findViewById(R.id.dish_display);

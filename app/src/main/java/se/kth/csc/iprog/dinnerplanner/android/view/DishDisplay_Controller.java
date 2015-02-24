@@ -47,6 +47,10 @@ public class DishDisplay_Controller implements GridView.OnItemClickListener {
         this.view = view;
         this.mContext = c;
         this.chooseMenu = menu;
+        dishesName = new String[model.getDishes().size()];
+        dishesImages = new String[model.getDishes().size()];
+        dishesPrice = new int[model.getDishes().size()];
+        vecDish = new Vector<Dish>(model.getDishes().size());
         if(chooseMenu)menuActivity = (ChooseMenu)act;
         else instructionActivity = (InstructionsMenu)act;
         int i = 0;

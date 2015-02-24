@@ -68,7 +68,7 @@ public class ChooseMenu extends Activity implements Observer {
         DinnerModel modelG = ((DinnerPlannerApplication) this.getApplication()).getModel();
         model = modelG;
         //Set banner
-        Banner bannerView = new Banner(findViewById(R.id.this_is_banner_view_id));
+        Banner bannerView = new Banner(findViewById(R.id.banner));
         //Set Starters Area
         ExampleView starters = new ExampleView(findViewById(R.id.starters), "Starters");
         //Set list of Starters to show
@@ -80,7 +80,7 @@ public class ChooseMenu extends Activity implements Observer {
         //DishDisplay mainCourseItems = new DishDisplay(this,findViewById(R.id.mainCourseImage), model.getDishesOfType(2),true, model,this);
         ExampleView desserts = new ExampleView(findViewById(R.id.desserts), "Desserts");
        // DishDisplay dessertsItems = new DishDisplay(this,findViewById(R.id.dessertsImage), model.getDishesOfType(3),true, model,this);
-        DetailsDinner details = new DetailsDinner(findViewById(R.id.this_is_details_dinner_view_id), model);
+        DetailsDinner details = new DetailsDinner(findViewById(R.id.guestsID), model);
         //Set "Create" button
         ButtonStart_Create start = new ButtonStart_Create(findViewById(R.id.button_start), "Create", this.model);
         ButtonStart_CreateController startController = new ButtonStart_CreateController(this.model, start,false );

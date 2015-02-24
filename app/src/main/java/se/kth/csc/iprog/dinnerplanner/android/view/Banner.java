@@ -12,7 +12,7 @@ public class Banner {
 	public Banner(View view) {
 		// store in the class the reference to the Android View
 		this.view = view;
-		TextView banner = (TextView) view.findViewById(R.id.banner);
+		TextView banner = (TextView) view.findViewById(R.id.bannerText);
 		banner.setText("Dinner Planner");
 
 		// Setup the rest of the view layout

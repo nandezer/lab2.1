@@ -3,7 +3,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="top"
-    android:layout_marginTop="70dp"
     android:id="@+id/this_is_details_dinner_view_id"
     android:background="#ffffffff">
 
@@ -11,35 +10,22 @@
 
 
     <TextView
-        android:id="@+id/participants"
+        android:id="@+id/guests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12pt"
         android:layout_marginLeft="10dp"
-        android:adjustViewBounds="true"
         android:text="@string/guests"
         android:textColor="#ff000000" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="200dp"
-        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/guests"
+        android:layout_marginLeft="10dp"
         android:id="@+id/spinner"
         android:visibility="visible"
-        android:layout_alignBottom="@+id/participants" />
-
-    <TextView
-        android:id="@+id/chooseMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textSize="17pt"
-        android:layout_marginTop="50dp"
-        android:adjustViewBounds="true"
-        android:text="@string/chooseMenu"
-        android:textColor="#ff000000" />
-
+        android:layout_alignBottom="@+id/guests" />
 
 
 </RelativeLayout>

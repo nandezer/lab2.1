@@ -27,7 +27,7 @@ public class DetailsDinner {
         this.view = view;
         this.model = model;
 
-        TextView participants = (TextView) view.findViewById(R.id.participants);
+        TextView participants = (TextView) view.findViewById(R.id.guests);
         participants.setText("Guests");
     }
 }
