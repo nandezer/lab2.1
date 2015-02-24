@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 
+import java.util.Set;
 import java.util.Vector;
 
 import se.kth.csc.iprog.dinnerplanner.android.ChooseMenu;
@@ -42,19 +43,20 @@ public class DishDisplay_Controller implements GridView.OnItemClickListener {
     ImageButton btnClosePopup;
     ChooseMenu menuActivity;
 
-    public DishDisplay_Controller(DinnerModel model , DishDisplay view,Context c, boolean menu, Activity act){
+    public DishDisplay_Controller(DinnerModel model , DishDisplay view,Context c, boolean menu, Activity act, int type){
         this.model = model;
         this.view = view;
         this.mContext = c;
         this.chooseMenu = menu;
-        dishesName = new String[model.getDishes().size()];
-        dishesImages = new String[model.getDishes().size()];
-        dishesPrice = new int[model.getDishes().size()];
-        vecDish = new Vector<Dish>(model.getDishes().size());
+        Set<Dish> dishes = model.getDishesOfType(type);
+        dishesName = new String[dishes.size()];
+        dishesImages = new String[dishes.size()];
+        dishesPrice = new int[dishes.size()];
+        vecDish = new Vector<Dish>(dishes.size());
         if(chooseMenu)menuActivity = (ChooseMenu)act;
         else instructionActivity = (InstructionsMenu)act;
         int i = 0;
-        for(Dish d : model.getDishes()){
+        for(Dish d : dishes){
             dishesName[i]= d.getName();
             dishesImages[i]= d.getImage();
             vecDish.add(d);
@@ -63,7 +65,7 @@ public class DishDisplay_Controller implements GridView.OnItemClickListener {
             }
             i++;
         }
-        view.grid.setAdapter(new DishAdapter(model.getDishes(),c ,dishesName, dishesImages));
+        view.grid.setAdapter(new DishAdapter(dishes,c ,dishesName, dishesImages));
         view.grid.setOnItemClickListener(this);
     }
 
