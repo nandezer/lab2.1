@@ -34,13 +34,9 @@ public class InstructionsMenu extends Activity {
         super.onCreate(savedInstanceState);
         //STATIC
         this.model = ((DinnerPlannerApplication)this.getApplication()).getModel();
-        // Set the view for the main activity screen
-        // it must come before any call to findViewById method
         setContentView(R.layout.instructions_menu);
-        Banner bannerView = new Banner(findViewById(R.id.banner_instructions));
+        Banner bannerView = new Banner(findViewById(R.id.banner_instructions), model);
         ExampleView ingredients = new ExampleView(findViewById(R.id.selectedIngredients),"Ingredients");
-
-
         float totalPrice = model.getTotalMenuPrice()*model.getNumberOfGuests();
         ExampleView totalCost = new ExampleView(findViewById(R.id.price_instructions),"Total Cost: "+String.valueOf(totalPrice)+" kr");
         ExampleView instructions = new ExampleView(findViewById(R.id.instruction_header),"Instructions");
@@ -65,7 +61,8 @@ public class InstructionsMenu extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.goBack:
-                startActivity(new Intent(this, ChooseMenu.class));
+                //startActivity(new Intent(this, ChooseMenu.class));
+                finish();
                 break;
             case R.id.dish_display:
                 toDisplay = new ExampleView(findViewById(R.id.instruction_dish),listIngredients);

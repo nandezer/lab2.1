@@ -1,17 +1,12 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
-import android.app.Activity;
-import android.content.Context;
+
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import java.util.Observer;
-
 import se.kth.csc.iprog.dinnerplanner.android.ChooseMenu;
 import se.kth.csc.iprog.dinnerplanner.android.InstructionsMenu;
-import se.kth.csc.iprog.dinnerplanner.android.MainActivity;
-import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 
 /**
@@ -19,9 +14,9 @@ import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
  */
 public class ButtonStart_CreateController implements OnClickListener  {
 
-    DinnerModel model;
-    ButtonStart_Create view;
-    boolean start;
+    private DinnerModel model;
+    private ButtonStart_Create view;
+    private boolean start;
 
     public ButtonStart_CreateController( DinnerModel model , ButtonStart_Create view, boolean start ){
         this.model = model;
@@ -41,5 +36,13 @@ public class ButtonStart_CreateController implements OnClickListener  {
                 Intent intent = new Intent(v.getContext(), InstructionsMenu.class);
                 v.getContext().startActivity(intent);
         }
+    }
+
+    public DinnerModel getModel() {
+        return model;
+    }
+
+    public void setModel(DinnerModel model) {
+        this.model = model;
     }
 }

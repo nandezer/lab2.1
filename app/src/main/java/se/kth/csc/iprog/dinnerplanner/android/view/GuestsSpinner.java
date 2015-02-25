@@ -1,7 +1,7 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -9,20 +9,23 @@ import java.util.Observer;
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 
-public class Banner implements Observer {
+/**
+ * Created by Isaac Rondon on 25-02-2015.
+ */
+public class GuestsSpinner implements Observer {
 
-	View view;
+    View view;
     DinnerModel model;
-    TextView banner;
+    Spinner spinnerDropDown;
 
-	public Banner(View view, DinnerModel model) {
+    public GuestsSpinner(View view, DinnerModel model){
         this.model = model;
-		this.view = view;
+        this.view = view;
         this.model.addObserver(this);
-		banner = (TextView) view.findViewById(R.id.bannerText);
-		banner.setText("Dinner Planner");
+        spinnerDropDown =(Spinner) view.findViewById(R.id.spinner);
+
     }
-    @Override
+
     public void update(Observable observable, Object data) {
         // This method is notified after data changes.
 

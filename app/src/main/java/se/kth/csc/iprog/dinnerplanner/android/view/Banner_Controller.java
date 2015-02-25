@@ -24,17 +24,32 @@ public class Banner_Controller implements View.OnClickListener {
         this.model = model;
         this.act = act;
         this.chooseMenu= c;
+        view.banner.setOnClickListener(this);
 
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.banner:
+            case R.id.bannerText:
                 ((DinnerPlannerApplication)(act.getApplication())).setModel(new DinnerModel());
                 chooseMenu.displayScreen();
                 chooseMenu.displayPrice();
+         }
+    }
 
+    public DinnerModel getModel() {
+        return model;
+    }
 
-        }
+    public void setModel(DinnerModel model) {
+        this.model = model;
+    }
+
+    public Banner getView() {
+        return view;
+    }
+
+    public void setView(Banner view) {
+        this.view = view;
     }
 }
